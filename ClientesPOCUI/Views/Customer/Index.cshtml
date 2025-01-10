@@ -1,0 +1,39 @@
+﻿@model List<ClientesPOCUI.Models.CustomerViewModel>
+
+@{
+    var successMessage = ViewData["SuccessMessage"];
+}
+
+@if (successMessage != null)
+{
+    <div class="alert alert-success">
+        @successMessage
+    </div>
+}
+
+<h1>Clientes</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Name</td>
+                <td>@customer.Email</td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Customer" asp-route-customerId="@customer.Id" class="btn btn-primary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@customer.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Customer")" class="btn btn-primary">Adicionar Novo Cliente</a>

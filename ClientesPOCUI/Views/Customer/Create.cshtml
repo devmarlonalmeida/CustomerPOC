@@ -1,0 +1,88 @@
+﻿@model ClientesPOCUI.Models.CustomerViewModel
+
+<h1>Registrar novo cliente</h1>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="form-group mt-2">
+        <label asp-for="Name">Nome</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mt-2">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mt-2">
+        <label asp-for="Logo"></label>
+        <input type="file" asp-for="Logo" />
+        <span asp-validation-for="Logo" class="text-danger"></span>
+    </div>
+
+    <div id="addresses" class="mt-4">
+        <div class="d-flex justify-content-between">
+            <h4>Endereços</h4>
+            <button type="button" onclick="addAddress()" class="btn btn-success">Adicionar Endereço</button>
+        </div>
+
+        @for (var i = 0; i < Model.Addresses.Count; i++)
+        {
+            <input type="hidden" asp-for="@Model.Addresses[i].Id" />
+            <div class="form-group mt-3">
+                <label>Rua</label>
+                <input asp-for="Addresses[i].Street" class="form-control mt-2" />
+            </div>
+            <div class="form-group">
+                <label>Cidade</label>
+                <input asp-for="Addresses[i].City" class="form-control mt-2" />
+            </div>
+            <div class="form-group">
+                <label>Estado</label>
+                <input asp-for="Addresses[i].State" class="form-control mt-2" />
+            </div>
+            <button type="button" onclick="removeAddress(@i)" class="btn btn-danger mt-3 mb-3">Remove</button>
+        }
+
+        <span asp-validation-for="Addresses" class="text-danger"></span>
+    </div>
+
+    <div class="d-flex justify-content-around mt-4">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+
+</form>
+
+<script>
+    let addressIndex = @Model.Addresses.Count;
+
+    function addAddress() {
+        const container = document.getElementById("addresses");
+        const newAddress = `
+                            <div class="form-group">
+                                <label>Rua</label>
+                                <input name="Addresses[${addressIndex}].Street" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Cidade</label>
+                                <input name="Addresses[${addressIndex}].City" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Estado</label>
+                                <input name="Addresses[${addressIndex}].State" class="form-control" />
+                            </div>
+                            <button type="button" onclick="removeAddress(${addressIndex})" class="btn btn-danger mt-3 mb-3">Remover</button>
+                        `;
+        container.insertAdjacentHTML("beforeend", newAddress);
+        addressIndex++;
+    }
+
+    function removeAddress(index) {
+        const addressFields = document.querySelectorAll(`[name^='Addresses[${index}]']`);
+        addressFields.forEach(field => field.closest('.form-group').remove());
+    }
+</script>
