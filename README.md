@@ -65,11 +65,13 @@ CREATE TYPE AddressTableType AS TABLE
     State NVARCHAR(100),
     CustomerId UNIQUEIDENTIFIER
 );
+```
 
 Procedimentos Armazenados
+
 1. Criar Cliente (AddCustomer)
-sql
-Copy code
+   
+```sql
 CREATE PROCEDURE AddCustomer
     @Id UNIQUEIDENTIFIER,
     @Name NVARCHAR(100),
@@ -92,9 +94,11 @@ BEGIN
 
     COMMIT TRANSACTION;
 END;
-2. Atualizar Cliente (UpdateCustomer)
-sql
-Copy code
+```
+
+3. Atualizar Cliente (UpdateCustomer)
+   
+```sql
 CREATE PROCEDURE UpdateCustomer
     @Id UNIQUEIDENTIFIER,
     @Name NVARCHAR(100),
@@ -151,21 +155,26 @@ BEGIN
 
     COMMIT TRANSACTION;
 END;
+```
+
 Comandos de Migrations
 Para configurar o Entity Framework Core e gerar a base de dados, siga os passos abaixo.
 
 Instalar EF 6
 Instale a ferramenta dotnet-ef para gerenciamento de migrations:
 
-bash
-Copy code
+```bash
 dotnet tool install --global dotnet-ef --version 6.*
+```
+
 Rodar a Migration Inicial
+
 Crie e aplique a migration inicial para configurar o banco de dados:
 
-bash
-Copy code
+```bash
 dotnet ef migrations add Initial --startup-project ClientesPOCApi --project Infrastructure
+```
+
 Como Rodar o Projeto
 Clone o repositório para sua máquina local.
 
@@ -173,19 +182,15 @@ Certifique-se de que todas as dependências do projeto estão instaladas.
 
 Execute o comando para rodar a aplicação:
 
-bash
-Copy code
+```bash
 dotnet run --project ClientesPOCApi
+```
+
 O projeto estará disponível em http://localhost:5000.
 
 Considerações Finais
-Esse projeto segue as melhores práticas de arquitetura para aplicações .NET, com uma separação clara de responsabilidades, validação de dados e controle de fluxo. A comunicação entre o frontend Blazor e o backend API RESTful é eficiente, e a utilização de procedimentos armazenados permite um controle de dados robusto e otimizado.
+Esse projeto segue as melhores práticas de arquitetura para aplicações .NET, com uma separação clara de responsabilidades,
+validação de dados e controle de fluxo. A comunicação entre o frontend Blazor e o backend API RESTful é eficiente, e a
+utilização de procedimentos armazenados permite um controle de dados robusto e otimizado.
 
-Autor: [Seu Nome]
-
-Licença: MIT License
-
-javascript
-Copy code
-
-Esse arquivo `README.md` fornece uma visão completa da arquitetura, processos de migração, coma
+Autor: Marlon Almeida
