@@ -1,6 +1,6 @@
 # Clientes POC
 
-Este projeto é uma aplicação web que utiliza Blazor Server para a camada de apresentação e ASP.NET Core API para a camada de backend. O sistema gerencia clientes, incluindo o cadastro de dados pessoais e endereços, com a possibilidade de enviar e armazenar logotipos. A arquitetura do sistema segue o padrão de **Arquitetura em Camadas**, com uma comunicação robusta entre o frontend e o backend.
+Este projeto é uma aplicação web que utiliza Razor Pages para a camada de apresentação e ASP.NET Core API para a camada de backend. O sistema gerencia clientes, incluindo o cadastro de dados pessoais e endereços, com a possibilidade de enviar e armazenar logotipos. A arquitetura do sistema segue o padrão de **Arquitetura em Camadas**, com uma comunicação robusta entre o frontend e o backend.
 
 ## Tecnologias Usadas
 
