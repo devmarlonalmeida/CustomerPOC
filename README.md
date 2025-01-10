@@ -4,7 +4,6 @@ Este projeto é uma aplicação web que utiliza Blazor Server para a camada de a
 
 ## Tecnologias Usadas
 
-- **Blazor Server**: Camada de apresentação (UI) baseada em Blazor.
 - **ASP.NET Core**: Camada de backend com uma API RESTful para CRUD de clientes e endereços.
 - **Entity Framework Core**: Para persistência de dados no banco de dados.
 - **SQL Server**: Banco de dados utilizado para armazenar clientes, endereços e logotipos.
@@ -18,11 +17,10 @@ Este projeto é uma aplicação web que utiliza Blazor Server para a camada de a
 
 ### Camadas do Projeto
 
-- **Camada de Apresentação (UI)**: Utiliza **Blazor Server** e **Razor Pages** para exibir e interagir com os dados.
+- **Camada de Apresentação (UI)**: Utiliza **Razor Pages** para exibir e interagir com os dados.
 - **Camada de Aplicação**: Contém a lógica de negócios e os casos de uso para gerenciar as operações de cliente e endereços.
-- **Camada de Domínio**: Define as entidades principais, como `Customer`, `Address` e `Logo`, além de seus DTOs e validações.
+- **Camada de Domínio**: Define as entidades principais, como `Customer` e `Address`, além de seus DTOs e validações.
 - **Camada de Infraestrutura**: Gerencia o acesso ao banco de dados com **Entity Framework Core** e implementa o cache em memória.
-- **Serviços Externos**: Responsáveis pela comunicação com APIs externas (se necessário) e serviços de armazenamento de arquivos.
 
 ---
 
@@ -157,6 +155,8 @@ BEGIN
 END;
 ```
 
+Obs: essas procedures devem ser criadas no banco de dados, para que o sistema funcione normalmente.
+
 Comandos de Migrations
 Para configurar o Entity Framework Core e gerar a base de dados, siga os passos abaixo.
 
@@ -186,7 +186,7 @@ Execute o comando para rodar a aplicação:
 dotnet run --project ClientesPOCApi
 ```
 
-O projeto estará disponível em http://localhost:5000.
+O projeto estará disponível em https://localhost:7245/.
 
 Considerações Finais
 Esse projeto segue as melhores práticas de arquitetura para aplicações .NET, com uma separação clara de responsabilidades,
